@@ -10,7 +10,6 @@ theme:
   locale: en
   logo: Images/soar.png
   favicon: Images/soar.png
-  custom_dir: overrides
   icon:
     admonition:
       note: octicons/tag-16
@@ -112,29 +111,29 @@ nav:
   - Downloads:
       - downloads/index.md
       - Soar:
-        - downloads/soar/index.md
-        - Latest: downloads/soar/latest.md
-        - Archive: downloads/soar/archive.md
-        - JSoar: downloads/soar/jsoar.md
+          - downloads/soar/index.md
+          - Latest: downloads/soar/latest.md
+          - Archive: downloads/soar/archive.md
+          - JSoar: downloads/soar/jsoar.md
       - Agents:
-        - downloads/agents/index.md
-        - 15-Puzzle: downloads/agents/15-puzzle.md
-        - 8-Puzzle: downloads/agents/8-puzzle.md
-        - Algebra Solver: downloads/agents/algebra_solver.md
-        - Arithmetic: downloads/agents/arithmetic.md
-        - Arithmetic (with Semantic Memory): downloads/agents/arithmetic_(with_semantic_memory).md
-        - Blocks-World (Hierarchical Look-Ahead): downloads/agents/blocks-world_(hierarchical_look-ahead).md
-        - Blocks-World (Hierarchical): downloads/agents/blocks-world_(hierarchical).md
+          - downloads/agents/index.md
+          - 15-Puzzle: downloads/agents/15-puzzle.md
+          - 8-Puzzle: downloads/agents/8-puzzle.md
+          - Algebra Solver: downloads/agents/algebra_solver.md
+          - Arithmetic: downloads/agents/arithmetic.md
+          - Arithmetic (with Semantic Memory): downloads/agents/arithmetic_(with_semantic_memory).md
+          - Blocks-World (Hierarchical Look-Ahead): downloads/agents/blocks-world_(hierarchical_look-ahead).md
+          - Blocks-World (Hierarchical): downloads/agents/blocks-world_(hierarchical).md
       - Domains:
-        - downloads/domains/index.md
-        - Dice: downloads/domains/dice.md
+          - downloads/domains/index.md
+          - Dice: downloads/domains/dice.md
       - Agent Development Tools:
-        - downloads/agent_development_tools/index.md
-        - Episodic Memory Size Tool: downloads/agent_development_tools/episodic_memory_size_tool.md
+          - downloads/agent_development_tools/index.md
+          - Episodic Memory Size Tool: downloads/agent_development_tools/episodic_memory_size_tool.md
       - Examples and Unsupported:
-        - downloads/examples_and_unsupported/index.md
-        - C++ Command Line Filter: downloads/examples_and_unsupported/cpp_command_line_filter_example.md
-        - Towers of Hanoi: downloads/examples_and_unsupported/towers_of_hanoi.md
+          - downloads/examples_and_unsupported/index.md
+          - C++ Command Line Filter: downloads/examples_and_unsupported/cpp_command_line_filter_example.md
+          - Towers of Hanoi: downloads/examples_and_unsupported/towers_of_hanoi.md
   - Tutorials:
       - tutorials/index.md
       - Official Soar Tutorials:
@@ -167,45 +166,45 @@ nav:
       - Technical FAQ: development/SoarTechnicalFAQ.md
       - Building Soar and ROS1: development/BuildingSoarRos.md
       - Soar Agents:
-        - Design Dogma: development/agents/DesignDogma.md
-        - Soar Programmer's Guide: development/agents/SoarProgrammersGuide.md
-        - SML Output Link Guide: development/agents/SMLOutputLinkGuide.md
-        - How to compile SML Clients: development/agents/HowToCompileSmlClients.md
+          - Design Dogma: development/agents/DesignDogma.md
+          - Soar Programmer's Guide: development/agents/SoarProgrammersGuide.md
+          - SML Output Link Guide: development/agents/SMLOutputLinkGuide.md
+          - How to compile SML Clients: development/agents/HowToCompileSmlClients.md
       - Soar Kernel:
-        - Basic Kernel Terminology: development/soar/BasicKernelTerminology.md
-        - CLI Parsing Code: development/soar/CLIParsingCode.md
-        - IO and Reward Links: development/soar/IOAndRewardLinks.md
-        - Memory Leak Debugging with Visual Studio: development/soar/MemoryLeakDebuggingWithVisualStudio.md
-        - Threads in SML: development/soar/ThreadsInSML.md
-        - Timers: development/soar/Timers.md
-        - Waterfall: development/soar/Waterfall.md
+          - Basic Kernel Terminology: development/soar/BasicKernelTerminology.md
+          - CLI Parsing Code: development/soar/CLIParsingCode.md
+          - IO and Reward Links: development/soar/IOAndRewardLinks.md
+          - Memory Leak Debugging with Visual Studio: development/soar/MemoryLeakDebuggingWithVisualStudio.md
+          - Threads in SML: development/soar/ThreadsInSML.md
+          - Timers: development/soar/Timers.md
+          - Waterfall: development/soar/Waterfall.md
   - Workshops:
-    - workshops/index.md
-    - workshops/44.md
-    - workshops/41.md
-    - workshops/40.md
-    - workshops/39.md
-    - workshops/38.md
-    - workshops/37.md
-    - workshops/36.md
-    - workshops/35.md
-    - workshops/34.md
-    - workshops/33.md
-    - workshops/32.md
-    - workshops/31.md
-    - workshops/30.md
-    - workshops/29.md
-    - workshops/28.md
-    - workshops/27.md
-    - workshops/26/index.md
-    - workshops/25/index.md
-    - workshops/24/index.md
-    - workshops/23.md
-    - workshops/22.md
-    - workshops/21.md
-    - workshops/20/index.md
-    - workshops/19.md
-    - workshops/17.md
+      - workshops/index.md
+      - workshops/44.md
+      - workshops/41.md
+      - workshops/40.md
+      - workshops/39.md
+      - workshops/38.md
+      - workshops/37.md
+      - workshops/36.md
+      - workshops/35.md
+      - workshops/34.md
+      - workshops/33.md
+      - workshops/32.md
+      - workshops/31.md
+      - workshops/30.md
+      - workshops/29.md
+      - workshops/28.md
+      - workshops/27.md
+      - workshops/26/index.md
+      - workshops/25/index.md
+      - workshops/24/index.md
+      - workshops/23.md
+      - workshops/22.md
+      - workshops/21.md
+      - workshops/20/index.md
+      - workshops/19.md
+      - workshops/17.md
   - Support:
       - support/index.md
   - Reference:
@@ -240,15 +239,52 @@ nav:
           - trace: reference/cli/cmd_trace.md
           - visualize: reference/cli/cmd_visualize.md
           - wm: reference/cli/cmd_wm.md
+      - Soar SML API:
+          - reference/SoarSML/README.md
+          - "Classes":
+              - "Class List": "SoarSML/annotated.md"
+              - "Class Index": "SoarSML/classes.md"
+              - "Class Hierarchy": "SoarSML/hierarchy.md"
+              - "Class Members": "SoarSML/class_members.md"
+              - "Class Member Functions": "SoarSML/class_member_functions.md"
+              - "Class Member Variables": "SoarSML/class_member_variables.md"
+              - "Class Member Typedefs": "SoarSML/class_member_typedefs.md"
+              - "Class Member Enumerations": "SoarSML/class_member_enums.md"
+      - Soar Kernel API:
+          - reference/KernelAPI/README.md
+          - "Classes":
+              - "Class List": "Kernel/annotated.md"
+              - "Class Index": "Kernel/classes.md"
+              - "Class Hierarchy": "Kernel/hierarchy.md"
+              - "Class Members": "Kernel/class_members.md"
+              - "Class Member Functions": "Kernel/class_member_functions.md"
+              - "Class Member Variables": "Kernel/class_member_variables.md"
+              - "Class Member Typedefs": "Kernel/class_member_typedefs.md"
+              - "Class Member Enumerations": "Kernel/class_member_enums.md"
+
   - Tag Index: home/tags.md
 
 plugins:
   - search
-  - macros:
-      on_error_fail: true
-      on_undefined: strict
+  # - macros:
+  #     on_error_fail: true
+  #     on_undefined: strict
   - tags:
       tags_file: home/tags.md
+  - mkdoxy:
+      projects:
+        SoarSML:
+          src-dirs: Soar/Core/CLI/ Soar/Core/ClientSML/ Soar/Core/ConnectionSML/ Soar/Core/ElementXML/ Soar/Core/KernelSML/
+          full-doc: True
+          doxy-cfg:
+            FILE_PATTERNS: "*.cpp *.h*"
+            RECURSIVE: True
+        Kernel:
+          src-dirs: Soar/Core/SoarKernel/
+          full-doc: True
+          doxy-cfg:
+            FILE_PATTERNS: "*.cpp *.h*"
+            RECURSIVE: True
 
 hooks:
   - hooks.py
