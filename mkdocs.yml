@@ -272,9 +272,9 @@ nav:
 
 plugins:
   - search
-  - macros:
-      on_error_fail: true
-      on_undefined: strict
+  # - macros:
+  #     on_error_fail: true
+  #     on_undefined: strict
   - tags:
       tags_file: home/tags.md
   - mkdoxy:
