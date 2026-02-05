@@ -1,4 +1,3 @@
-<!-- markdownlint-disable-next-line -->
 # Episodic Memory
 
 Episodic memory is a record of an agent’s stream of experience. The episodic
@@ -11,7 +10,7 @@ performance on future tasks.
 This chapter is organized as follows: [episodic memory structures in working
 memory](#working-memory-structure); [episodic storage](#episodic-storage);
 [retrieving episodes](#retrieving-episodes); and a [discussion of
-performance](#performance).  The detailed behavior of episodic memory is
+performance](#performance). The detailed behavior of episodic memory is
 determined by numerous parameters that can be controlled and configured via the
 `epmem` command.
 
@@ -54,26 +53,26 @@ For debugging purposes, the **force** parameter allows the user to manually
 request that an episode be recorded (or not) during the current decision cycle.
 Behavior is as follows:
 
--   The value of the `force` parameter is initialized to `off` every decision cycle.
--   During the phase of episodic storage, episodic memory tests the value of the
-    `force` parameter; if it has a value other than `off`, episodic memory follows
-    the forced policy irrespective of the value of the `trigger` parameter.
+- The value of the `force` parameter is initialized to `off` every decision cycle.
+- During the phase of episodic storage, episodic memory tests the value of the
+  `force` parameter; if it has a value other than `off`, episodic memory follows
+  the forced policy irrespective of the value of the `trigger` parameter.
 
 ### Episode Contents
 
 When episodic memory stores a new episode, it captures the entire top-state of
 working memory. There are currently two exceptions to this policy:
 
--   Episodic memory only supports WMEs whose attribute is a constant. Behavior is
-    currently undefined when attempting to store a WME that has an attribute that
-    is an identifier.
+- Episodic memory only supports WMEs whose attribute is a constant. Behavior is
+  currently undefined when attempting to store a WME that has an attribute that
+  is an identifier.
 
--   The `exclusions` parameter allows the user to specify a set of attributes for
-    which Soar will not store WMEs. The storage process currently walks the
-    top-state of working memory in a breadth-first manner, and any WME that is not
-    reachable other than via an excluded WME will not be stored. By default,
-    episodic memory excludes the `epmem` and `smem` structures, to prevent encoding
-    of potentially large and/or frequently changing memory retrievals.
+- The `exclusions` parameter allows the user to specify a set of attributes for
+  which Soar will not store WMEs. The storage process currently walks the
+  top-state of working memory in a breadth-first manner, and any WME that is not
+  reachable other than via an excluded WME will not be stored. By default,
+  episodic memory excludes the `epmem` and `smem` structures, to prevent encoding
+  of potentially large and/or frequently changing memory retrievals.
 
 ### Storage Location
 
@@ -101,9 +100,10 @@ affects `init-soar` also. In other words, if the `append` setting is `off`, all
 episodes stored will be lost when an `init-soar` is performed. For episodic
 memory, `append` mode is `off` by default.
 
-Note: As of version 9.3.3, Soar now uses a new schema for the episodic memory database.
-This means databases from 9.3.2 and below can no longer be loaded. A conversion utility
-will be available in Soar 9.4 to convert from the old schema to the new one.
+Note: As of version 9.3.3, Soar now uses a new schema for the episodic memory
+database. This means databases from 9.3.2 and below can no longer be loaded. A
+conversion utility will be available in Soar 9.4 to convert from the old schema
+to the new one.
 
 ## Retrieving Episodes
 
@@ -148,26 +148,26 @@ Cue-based retrieval commands are used to search for an episode in the store that
 best matches an agent-supplied cue, while adhering to optional modifiers. A cue
 is composed of WMEs that partially describe a top-state of working memory in the
 retrieved episode. All cue-based retrieval requests must contain a single
-**^query** cue and, optionally, a single **^neg-query** cue.
+**`^query`** cue and, optionally, a single **`^neg-query`** cue.
 
 ```Soar
 <s> ^epmem.command.query <required-cue>
 <s> ^epmem.command.neg-query <optional-negative-cue>
 ```
 
-A ^querycue describes structures desired in the retrieved episode, whereas a
-^neg-query cue describes non-desired structures. For example, the following Soar
-production creates a ^querycue consisting of a particular state name and a copy
+A `^query` cue describes structures desired in the retrieved episode, whereas a
+`^neg-query` cue describes non-desired structures. For example, the following Soar
+production creates a `^query` cue consisting of a particular state name and a copy
 of a current value on the input-link structure:
 
 ```Soar
 sp {epmem*sample*query
-(state <s> ^epmem.command <ec>
-^io.input-link.foo <bar>)
+   (state <s> ^epmem.command <ec>
+      ^io.input-link.foo <bar>)
 -->
-(<ec> ^query <q>)
-(<q> ^name my-state-name
-^io.input-link.foo <bar>)
+   (<ec> ^query <q>)
+   (<q> ^name my-state-name
+      ^io.input-link.foo <bar>)
 }
 ```
 
@@ -183,7 +183,7 @@ readingComprehensive Working Memory Activation in Soar (Nuxoll, A., Laird, J.,
 James, M., ICCM 2004).
 
 The cue-based retrieval process can be thought of conceptually as a
-nearest-neighbor search.  First, all candidate episodes, defined as episodes
+nearest-neighbor search. First, all candidate episodes, defined as episodes
 containing at least one leaf WME (a cue WME with no sub-structure) in at least
 one cue, are identified. Two quantities are calculated for each candidate
 episode, with respect to the supplied cue(s): the cardinality of the match
@@ -280,8 +280,8 @@ Episodic memory supports the ability for an agent to "play forward" episodes
 using relative non-cue-based retrievals.
 
 Episodic memory stores the time of the last successful retrieval (non-cue-based
-or cue-based).  Agents can indirectly make use of this information by issuing
-**next** or **previous** commands.  Episodic memory executes these commands by
+or cue-based). Agents can indirectly make use of this information by issuing
+**next** or **previous** commands. Episodic memory executes these commands by
 attempting to retrieve the episode immediately proceeding/preceding the last
 successful retrieval (respectively). To issue one of these commands, the agent
 must create a new WME on the command link with the appropriate attribute (next
@@ -297,7 +297,7 @@ If no such episode exists then an error is returned.
 Currently, if the time of the last successfully retrieved episode is known to
 the agent (as could be the case by accessing result meta-data), these commands
 are identical to performing an absolute non-cue-based retrieval after
-adding/subtracting 1 to the last time (respectively).  However, if an episodic
+adding/subtracting 1 to the last time (respectively). However, if an episodic
 store dynamic like forgetting is implemented, these relative commands are
 guaranteed to return the next/previous valid episode (assuming one exists).
 
@@ -306,58 +306,79 @@ guaranteed to return the next/previous valid episode (assuming one exists).
 The following list details the WMEs that episodic memory creates in the result
 link of the epmem structure wherein a command was issued:
 
-retrieved `<retrieval-root>` If episodic memory retrieves an episode, that
-memory is placed here. This WME is an identifier that is treated as the root of
-the state that was used to create the episodic memory. If the retrieve command was
-issued with an invalid time, the value of this WME will be no-memory.
+- retrieved `<retrieval-root>`
 
-success `<query> <optional-neg-query>` If the cue-based retrieval was
-successful, the WME will have the status as the attribute and the value of the
-identifier of the query (and neg-query, if applicable).
+    If episodic memory retrieves an episode, that memory is placed here. This
+    WME is an identifier that is treated as the root of the state that was used
+    to create the episodic memory. If the retrieve command was issued with an
+    invalid time, the value of this WME will be no-memory.
 
-match-score This WME is created whenever an episode is successfully retrieved
-from a cue-based retrieval command. The WME value is a decimal indicating the raw
-match score for that episode with respect to the cue(s).
+- success `<query> <optional-neg-query>`
 
-cue-size This WME is created whenever an episode is successfully retrieved from a
-cue-based retrieval command. The WME value is an integer indicating the number of
-leaf WMEs in the cue(s).
+    If the cue-based retrieval was successful, the WME will have the status as the
+    attribute and the value of the identifier of the query (and neg-query, if
+    applicable).
 
-normalized-match-score This WME is created whenever an episode is success- fully
-retrieved from a cue-based retrieval command. The WME value is the decimal
-result of dividing the raw match score by the cue size. It can hypothetically be
-used as a measure of episodic memory’s relative confidence in the retrieval.
+- match-score
 
-match-cardinality This WME is created whenever an episode is successfully
-retrieved from a cue-based retrieval command. The WME value is an integer
-indicating the number of leaf WMEs matched in the `^querycue` minus those
-matched in the `^neg-querycue`.
+    This WME is created whenever an episode is successfully retrieved from a
+    cue-based retrieval command. The WME value is a decimal indicating the raw
+    match score for that episode with respect to the cue(s).
 
-memory-id This WME is created whenever an episode is successfully retrieved from
-a cue-based retrieval command. The WME value is an integer indicating the time of
-the retrieved episode.
+- cue-size
 
-present-id This WME is created whenever an episode is successfully retrieved
-from a cue-based retrieval command. The WME value is an integer indicating the
-current time, such as to provide a sense of "now" in episodic memory terms. By
-comparing this value to the memory-id value, the agent can gain a sense of the
-relative time that has passed since the retrieved episode was recorded.
+    This WME is created whenever an episode is successfully retrieved from a
+    cue-based retrieval command. The WME value is an integer indicating the
+    number of leaf WMEs in the cue(s).
 
-graph-match This WME is created whenever an episode is successfully retrieved
-from a cue-based retrieval command and the graph-match parameter was on. The
-value is an integer with value 1 if graph matching was executed successfully and
-0 otherwise.
+- normalized-match-score
 
-mapping `<mapping-root>`  This WME is created whenever an episode is successfully
-retrieved from a cue-based retrieval command, the graph-match parameter was on,
-and structural match was successful on the retrieved episode. This WME provides
-a mapping between identifiers in the cue and in the retrieved episode. For each
-identifier in the cue, there is anodeWME as an augmentation to the mapping
-identifier. The node has a cue augmentation, whose value is an identifier in the
-cue, and a retrieved augmentation, whose value is an identifier in the retrieved
-episode. In a graph match it is possible to have multiple identifier mappings –
-this map represents the "first" unified mapping (with respect to episodic memory
-algorithms).
+    This WME is created whenever an episode is success- fully retrieved from a
+    cue-based retrieval command. The WME value is the decimal result of dividing
+    the raw match score by the cue size. It can hypothetically be used as a
+    measure of episodic memory’s relative confidence in the retrieval.
+
+- match-cardinality
+
+    This WME is created whenever an episode is successfully
+    retrieved from a cue-based retrieval command. The WME value is an integer
+    indicating the number of leaf WMEs matched in the `^querycue` minus those
+    matched in the `^neg-querycue`.
+
+- memory-id
+
+    This WME is created whenever an episode is successfully retrieved from a
+    cue-based retrieval command. The WME value is an integer indicating the time
+    of the retrieved episode.
+
+- present-id
+
+    This WME is created whenever an episode is successfully retrieved from a
+    cue-based retrieval command. The WME value is an integer indicating the
+    current time, such as to provide a sense of "now" in episodic memory terms.
+    By comparing this value to the memory-id value, the agent can gain a sense
+    of the relative time that has passed since the retrieved episode was
+    recorded.
+
+- graph-match
+
+    This WME is created whenever an episode is successfully retrieved from a
+    cue-based retrieval command and the graph-match parameter was on. The value
+    is an integer with value 1 if graph matching was executed successfully and 0
+    otherwise.
+
+- mapping `<mapping-root>`
+
+    This WME is created whenever an episode is successfully retrieved from a
+    cue-based retrieval command, the graph-match parameter was on, and
+    structural match was successful on the retrieved episode. This WME provides
+    a mapping between identifiers in the cue and in the retrieved episode. For
+    each identifier in the cue, there is anodeWME as an augmentation to the
+    mapping identifier. The node has a cue augmentation, whose value is an
+    identifier in the cue, and a retrieved augmentation, whose value is an
+    identifier in the retrieved episode. In a graph match it is possible to have
+    multiple identifier mappings – this map represents the "first" unified
+    mapping (with respect to episodic memory algorithms).
 
 ## Performance
 
@@ -380,13 +401,13 @@ most recent). Given this procedure, it is trivial to create a two-WME cue that
 forces a linear search of the episodic store. Episodic memory combats linear
 scan by only searching candidate episodes, i.e. only those that contain a change
 in at least one of the cue WMEs. However, a cue that has no match and contains
-WMEs relevant to all episodes will force inspection of all episodes.  Thus,
+WMEs relevant to all episodes will force inspection of all episodes. Thus,
 worst-case performance will be linear in the number of episodes.
 
 ### Performance Tweaking
 
 When using a database stored to disk, several parameters become crucial to
-performance.  The first is **commit** , which controls the number of episodes
+performance. The first is **commit** , which controls the number of episodes
 that occur between writes to disk. If the total number of episodes (or a range)
 is known ahead of time, setting this value to a greater number will result in
 greatest performance (due to decreased I/O).
@@ -395,7 +416,7 @@ The next two parameters deal with the SQLite cache, which is a memory store used
 to speed operations like queries by keeping in memory structures like levels of
 index B+-trees. The first parameter, **page-size** , indicates the size, in
 bytes, of each cache page. The second parameter, **cache-size** , suggests to
-SQLite how many pages are available for the cache.  Total cache size is the
+SQLite how many pages are available for the cache. Total cache size is the
 product of these two parameter settings. The cache memory is not preallocated,
 so short/small runs will not necessarily make use of this space. Generally
 speaking, a greater number of cache pages will benefit query time, as SQLite can
@@ -437,7 +458,7 @@ pragma), thus episodic memory won’t wait for writes to complete before
 continuing execution. Second, transaction journaling is turned off (journalmode
 pragma), thus groups of modifications to the episodic store are not atomic (and
 thus interruptions due to application/os/hardware failure could lead to
-inconsistent database state).  Finally, upon initialization, episodic memory
+inconsistent database state). Finally, upon initialization, episodic memory
 maintains a continuous exclusive lock to the database (locking mode pragma),
 thus other applications/agents cannot make simultaneous read/write calls to the
 database (thereby reducing the need for potentially expensive system calls to
